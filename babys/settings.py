@@ -110,7 +110,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#
+# 静态文件地址
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'pstatic')
 ]
