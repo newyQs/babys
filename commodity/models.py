@@ -3,6 +3,7 @@ from django.utils.html import format_html
 
 
 class CommodityType(models.Model):
+    """商品类型表"""
     id = models.AutoField(primary_key=True)
     firsts = models.CharField('一级类型', max_length=100)
     seconds = models.CharField('二级类型', max_length=100)
@@ -17,6 +18,7 @@ class CommodityType(models.Model):
 
 
 class CommodityInfo(models.Model):
+    """商品信息表"""
     id = models.AutoField(primary_key=True)
     name = models.CharField('商品名称', max_length=100)
     sezes = models.CharField('商品规格', max_length=100)

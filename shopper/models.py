@@ -10,6 +10,7 @@ STATE = (
 
 
 class CartInfo(models.Model):
+    """购物车信息表"""
     id = models.AutoField(primary_key=True)
     quantity = models.IntegerField('购买数量')
     commodityInfos_id = models.IntegerField('商品ID')
@@ -25,6 +26,7 @@ class CartInfo(models.Model):
 
 
 class OrderInfo(models.Model):
+    """订单信息表"""
     id = models.AutoField(primary_key=True)
     price = models.FloatField('订单总价')
     created = models.DateField('创建时间', auto_now_add=True)

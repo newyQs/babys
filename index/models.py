@@ -3,6 +3,7 @@ from django.db import models
 
 # Create your models here.
 class PersonInfo(models.Model):
+    """个人信息表"""
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=20)
     age = models.IntegerField()
@@ -17,6 +18,7 @@ class PersonInfo(models.Model):
 
 
 class VocationInfo(models.Model):
+    """职业信息表"""
     id = models.AutoField(primary_key=True)
     job = models.CharField(max_length=20)
     title = models.CharField(max_length=20)
