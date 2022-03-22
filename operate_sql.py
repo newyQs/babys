@@ -87,3 +87,5 @@ from django.db.models import F, Q
 
 t = CommodityType.objects
 print(dir(t))
+
+

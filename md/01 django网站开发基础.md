@@ -23,7 +23,7 @@ Admin后台系统：
 ## 1.2 Django和WSCI
 WSGI(Web Server Gateway Interface)：**Web服务器网关接口**。
 是Python语言定义的Web服务器和Web应用程序或框架之间的一种简单而通用的接口协议。
-它是将Web服务器(如Apache或Nginx)的请求转发到后端Python Web应用程序或者Web框架
+它是将Web服务器(如Apache或Nginx)的请求转发到后端Python Web应用程序或者Web框架。
 
 Django、WSGI、Web服务器(如Apache或Nginx)之间的关系:
 ```text
@@ -35,7 +35,7 @@ Web应用框架通过WSGI将处理结果返回给Web服务器，最后由Web服�
 
 ```
 
-架构：
+两种架构：
 ```text
 客户端(HTTP请求) <--> WSGI Server (uWSGI, wsgiref) <--> WSGI Application
 
