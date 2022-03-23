@@ -31,3 +31,64 @@ class VocationInfo(models.Model):
     class Meta:
         db_table = "tb_vocation_info"
         verbose_name = "职业信息"
+
+
+class Province(models.Model):
+    """省份信息表"""
+    name = models.CharField(max_length=10)
+
+    def __str__(self):
+        return str(self.name)
+
+    class Meta:
+        db_table = "tb_province"
+
+
+class City(models.Model):
+    """城市信息表"""
+    name = models.CharField(max_length=5)
+    province = models.ForeignKey(Province, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.name)
+
+    class Meta:
+        db_table = "tb_city"
+
+
+class Person(models.Model):
+    """人物信息表"""
+    name = models.CharField(max_length=10)
+    living = models.ForeignKey(City, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.name)
+
+    class Meta:
+        db_table = "tb_person"
+
+
+class Performer(models.Model):
+    """人员信息表"""
+    id = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=20)
+    nationality = models.CharField(max_length=20)
+
+    def __str__(self):
+        return str(self.name)
+
+    class Meta:
+        db_table = "tb_performer"
+
+
+class Program(models.Model):
+    """节目信息表"""
+    id = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=20)
+    performer = models.ManyToManyField(Performer)
+
+    def __str__(self):
+        return str(self.name)
+
+    class Meta:
+        db_table = "tb_program"
