@@ -46,10 +46,33 @@ Web应用框架通过WSGI将处理结果返回给Web服务器，最后由Web服�
 
 ## 1.4 搭建开发环境
 
+1. pip install django
+
+2. 下载.whl包，直接安装：pip install <filepath>
+
 
 ## 1.5 创建django项目
 
+1. django-admin startproject <项目名>
 
+项目文件说明：
++ manage.py：
++ asgi.py：
++ wsgi.py：
++ urls.py：
++ settings：
+
+2. python manage.py startapp <app名称>
+
+app文件说明：
++ migrations：
++ admin.py：
++ apps.py：
++ models.py：
++ tests.py：
++ views.py：
+
+3. python manage.py runserver 0.0.0.0:8000
 
 ## 1.6 程序调试技巧
 
