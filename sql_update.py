@@ -27,7 +27,7 @@ get查询的值必须存在，且只有一条记录，否则报错
 filter查询的值无序存在，可以有多条记录，不会报错
 """
 
-# django的更新操作建议如下操作:
+# django的更新建议如下:
 """
 # 更新id=mid的数据（这里的id是主键，所有只会更新一条数据），熟悉设置为：field1=value1, field2=value2, ...
 c = CommodityType.objects.filter(id=mid).update(field1=value1, field2=value2, ...)
