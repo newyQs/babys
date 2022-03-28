@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'shopper',
 ]
 
-# 中间件
+# 中间件(内置7个)
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
