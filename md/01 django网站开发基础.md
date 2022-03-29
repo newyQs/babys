@@ -45,7 +45,7 @@ Web应用框架通过WSGI将处理结果返回给Web服务器，最后由Web服�
 ```
 
 ## 1.3 HTML、CSS和Javascript
-
+...
 
 
 ## 1.4 搭建开发环境
@@ -59,27 +59,30 @@ Web应用框架通过WSGI将处理结果返回给Web服务器，最后由Web服�
 
 1. django-admin startproject <项目名>
 
-项目文件说明：
+项目目录文件说明：
+```text
 + manage.py：命令行工具，可输入`python manage.py help` 查看所有命令
 + asgi.py：用于启动异步通信服务，比如实现在线聊天等异步通信功能。
 + wsgi.py：服务器网关接口，是python应用于web服务器之间的接口，用于django项目在服务器上的部署和上线。
 + urls.py：项目的路由设置，设置网站的具体网址内容。
 + settings：项目的配置文件。
+```
 
 2. python manage.py startapp <app名称>
 
-app文件说明：
+app目录的文件说明：
+```text
 + migrations：python manage.py makemigrations生成的迁移文件，可使用python migrate执行迁移到数据库。
 + admin.py：用于设置当前app的后台管理功能。
 + apps.py：当前app的配置信息。
 + models.py：定义数据库的映射类，每个类关联一张数据表，实现数据持久化。
 + tests.py：自动化测试的模型，用于实现单元测试。
 + views.py：视图文件，处理功能的业务逻辑。
+```
 
 3. python manage.py runserver 0.0.0.0:8000
 
 ## 1.6 程序调试技巧
-
-
+...
 
 ## 1.7 本章小结

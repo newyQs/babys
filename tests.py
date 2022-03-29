@@ -5,3 +5,4 @@ from django.middleware.csrf import CsrfViewMiddleware
 from django.contrib.auth.middleware import AuthenticationMiddleware
 from django.contrib.messages.middleware import MessageMiddleware
 from django.middleware.clickjacking import XFrameOptionsMiddleware
+
