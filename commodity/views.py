@@ -6,6 +6,8 @@ from .models import *
 
 
 def commodityView(request):
+    """商品列表页视图函数"""
+
     title = "商品列表"
     class_count = "commoditys"
 
@@ -48,7 +50,21 @@ def commodityView(request):
     return render(request, "commodity.html", locals())
 
 
+def detailView(request):
+    """商品详细页视图函数"""
+
+    title = "商品介绍"
+    class_content = "details"
+    commoditys = CommodityInfo.objects.filter(id=id).first()
+    items = CommodityInfo.objects.exclude(id=id).order_by("-sold")[:5]
+    like_list = request.session.get("likes", [])
+    likes = True if id in like_list else False
+    return render(request, "details.html", locals())
+
+
 def collectView(request):
+    """收藏视图函数"""
+
     mid = request.GET.get("id", "")
     result = {"result": "已收藏"}
     likes = request.session.get("likes", [])
