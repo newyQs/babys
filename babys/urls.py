@@ -17,13 +17,21 @@ from django.contrib import admin
 from django.urls import path, re_path, include
 from django.views.static import serve
 from django.conf import settings
+from index import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # 配置媒体资源的路由信息
     re_path('media/(?P<path>.*)', serve, {"document_root": settings.MEDIA_ROOT}, name="media"),
+    # 定义静态资源的路由信息
+    re_path('static/(?P<path>.*)', serve, {'document_root': settings.STATIC_ROOT}, name='static'),
+
     # 配置项目应用的路由urls分发
     path('', include(('index.urls', 'index'), namespace='index')),
     path('commodity', include(('commodity.urls', 'index'), namespace='commodity')),
     path('shopper', include(('shopper.urls', 'index'), namespace='shopper')),
 ]
+
+# 设置404和500
+handler404 = views.page_not_found
+handler500 = views.page_error

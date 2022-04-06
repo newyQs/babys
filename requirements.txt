@@ -2,3 +2,5 @@
 django
 mysqlclient
 #pymysql
+alipay
+alipay-sdk-python

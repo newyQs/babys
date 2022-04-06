@@ -9,13 +9,13 @@ def commodityView(request):
     """商品列表页视图函数"""
 
     title = "商品列表"
-    class_count = "commoditys"
+    classContent = "commoditys  "
 
-    # 根据CommodityType去查询相应信息
+    # 根据模型CommodityType去查询相应信息
     firsts = CommodityType.objects.values("firsts").distinct()
-    type_list = CommodityType.objects.all()
+    typesList  = CommodityType.objects.all()
 
-    # 获取请求参数：GET请求
+    # 获取get请求参数
     t = request.GET.get("t", "")  # 分页的商品信息
     s = request.GET.get("s", "sold")  # 商品排序方式，未给出默认销量sola
     p = request.GET.get("p", 1)  # 页数
@@ -50,28 +50,28 @@ def commodityView(request):
     return render(request, "commodity.html", locals())
 
 
-def detailView(request):
+def detailView(request, id):
     """商品详细页视图函数"""
 
     title = "商品介绍"
-    class_content = "details"
+    classContent  = "details"
     commoditys = CommodityInfo.objects.filter(id=id).first()
     items = CommodityInfo.objects.exclude(id=id).order_by("-sold")[:5]
-    like_list = request.session.get("likes", [])
-    likes = True if id in like_list else False
+    likesList = request.session.get("likes", [])
+    likes = True if id in likesList else False
     return render(request, "details.html", locals())
 
 
 def collectView(request):
     """收藏视图函数"""
 
-    mid = request.GET.get("id", "")
+    id = request.GET.get("id", "")
     result = {"result": "已收藏"}
     likes = request.session.get("likes", [])
 
-    if mid and not int(mid) in likes:
-        CommodityInfo.objects.filter(id=mid).update(likes=F("likes") + 1)
+    if id and not int(id) in likes:
+        CommodityInfo.objects.filter(id=id).update(likes=F("likes") + 1)
         result["result"] = "收藏成功"
-        request.session["likes"] = likes + [int(mid)]
+        request.session["likes"] = likes + [int(id)]
 
     return JsonResponse(result)
