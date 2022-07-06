@@ -41,6 +41,8 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    # 添加中间件LocalMiddleware
+    'django.contrib.sessions.local.LocalMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -106,7 +108,7 @@ USE_I18N = True
 USE_TZ = True
 
 # 静态资源配置
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -114,6 +116,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'pstatic')
 ]
+
+# 整个项目静态资源
+STATIC_ROOT = os.path.join(
+    BASE_DIR, "AllStatic"
+)
 
 # 配置媒体资源
 MEDIA_URL = '/media/'

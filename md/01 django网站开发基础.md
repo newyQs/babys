@@ -25,33 +25,55 @@ Admin后台系统：        内置Admin后台管理系统，系统扩展性强�
 
 WSGI(Web Server Gateway Interface)：**Web服务器网关接口**。
 
-它是Python语言定义的Web服务器和Web应用程序或框架之间的一种简单而通用的接口协议。
+它是为Python语言定义的Web服务器和Web应用程序或框架之间的一种简单而通用的接口协议。
 
 它是将Web服务器(如Apache或Nginx)的请求转发到后端Python Web应用程序或者Web框架。
 
 Django、WSGI、Web服务器(如Apache或Nginx)之间的关系:
 ```text
-Django是一个Web应用框架。WSGI是定义Web应用框架和Web服务器之间的通信协议。
+Django是一个Web应用框架，WSGI是定义Web应用框架和Web服务器之间的通信协议。
 一个完整的网站必须包含Web服务器，Web应用框架和数据库。
 用户通过浏览器访问网址的时候，这个访问相当于向网站发送一个HTTP请求，
 网站首先由Web服务器接收用户的HTTP请求，然后Web服务器通过WSGI将请求转发到Web应用框架进行处理，并得出处理结果。
 Web应用框架通过WSGI将处理结果返回给Web服务器，最后由Web服务器将处理结果返回到用户的浏览器，用户即看到网页内容。
 ```
 
-两级架构:
+WSGI分为两部分：服务端和应用端，服务端也可以称为网关端(即uWSGI或Gunicorn)，应用端也称为框架段(即Django或Flask的Web应用框架)。
+
+两级架构:是将服务端作为Web服务器(即uWSGI或Gunicorn)，许多Web框架已经附带了WSGI的服务端，比如Django或Flask，因此它们能直接运行启动
 ```text
-客户端(HTTP请求) <--> WSGI Server (uWSGI, wsgiref) <--> WSGI Application
+客户端(HTTP请求) <--> WSGI Server (uWSGI, wsgiref) <--> WSGI Application(Django, Flask)
 ```
 
 三级架构:
 ```text
-客户端(HTTP请求) <--> 代理服务器(Nginx) <--> WSGI Server (uWSGI, wsgiref) <--> WSGI Application
+客户端(HTTP请求) <--> 代理服务器(Nginx) <--> WSGI Server (uWSGI, wsgiref) <--> WSGI Application(Django, Flask)
 ```
 
 ## 1.3 HTML、CSS和Javascript
 
 (1) HTML
 
+```
+img
+a
+strong
+em
+i
+b
+br
+div
+span
+ol
+ul
+li
+dl
+h1~h6
+p
+tr
+th
+td
+```
 
 (2) CSS
 
@@ -72,9 +94,9 @@ Web应用框架通过WSGI将处理结果返回给Web服务器，最后由Web服�
 
 项目目录文件说明：
 ```text
-+ manage.py：        命令行工具，可输入`python manage.py help` 查看所有命令
++ manage.py：        命令行工具，可输入`python manage.py help` 查看所有命令。
 + asgi.py：          用于启动异步通信服务，比如实现在线聊天等异步通信功能。
-+ wsgi.py：          服务器网关接口，是python应用于web服务器之间的接口，用于django项目在服务器上的部署和上线。
++ wsgi.py：          服务器网关接口，是python应用与web服务器之间的接口，用于django项目在服务器上的部署和上线。
 + urls.py：          项目的路由设置，设置网站的具体网址内容。
 + settings：         项目的配置文件。
 ```
@@ -98,3 +120,13 @@ app目录的文件说明：
 ...
 
 ## 1.7 本章小结
+
+```
+WSGI:全称 Web Server Gateway Interface，或者 Python Web Server Gateway Interface ，是为 Python 语言定义的 Web 服务器和 Web 应用程序或框架之间的一种简单而通用的接口。也可以认为WSGI是一种通信协议。自从 WSGI 被开发出来以后，许多其它语言中也出现了类似接口。WSGI 的官方定义是，the Python Web Server Gateway Interface。从名字就可以看出来，这东西是一个Gateway，也就是网关。网关的作用就是在协议之间进行转换。
+
+ASGI，是构建于WSGI接口规范之上的异步服务器网关接口，是WSGI的延伸和扩展。
+
+uwsgi：uwsgi是服务器和服务端应用程序的通信协议，规定了怎么把请求转发给应用程序和返回; uwsgi是一种线路协议而不是通信协议，在此常用于在uWSGI服务器与其他网络服务器的数据通信。
+
+uWSGI：是一个Web服务器，它实现了WSGI协议、uwsgi、http等协议。
+```
