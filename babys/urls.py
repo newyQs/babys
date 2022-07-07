@@ -26,10 +26,10 @@ urlpatterns = [
     # 定义静态资源的路由信息
     re_path('static/(?P<path>.*)', serve, {'document_root': settings.STATIC_ROOT}, name='static'),
 
-    # 配置项目应用的路由urls分发
+    # 定义项目应用的路由urls分发
     path('', include(('index.urls', 'index'), namespace='index')),
-    path('commodity', include(('commodity.urls', 'index'), namespace='commodity')),
-    path('shopper', include(('shopper.urls', 'index'), namespace='shopper')),
+    path('commodity', include(('commodity.urls', 'commodity'), namespace='commodity')),
+    path('shopper', include(('shopper.urls', 'shopper'), namespace='shopper')),
 ]
 
 # 设置404和500
