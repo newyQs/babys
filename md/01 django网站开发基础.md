@@ -55,24 +55,24 @@ WSGI分为两部分：服务端和应用端，服务端也可以称为网关端(
 (1) HTML
 
 ```
-img
-a
-strong
-em
-i
-b
-br
-div
-span
-ol
-ul
-li
-dl
-h1~h6
-p
-tr
-th
-td
+img：
+a：
+strong：
+em：
+i：
+b：
+br：
+div：
+span：
+ol：
+ul：
+li：
+dl：
+h1~h6：
+p：
+tr：
+th：
+td：
 ```
 
 (2) CSS
@@ -117,7 +117,10 @@ app目录的文件说明：
 
 
 ## 1.6 程序调试技巧
-...
+
+```
+
+```
 
 ## 1.7 本章小结
 
